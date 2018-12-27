@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,学习笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="阅读JavaScript面向对象精要这本书时做的一些知识点总结，用于日后巩固。">
+<meta name="keywords" content="JavaScript,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记（JavaScript面向对象精要）">
+<meta property="og:url" content="http://yoursite.com/2018/12/27/学习笔记（JavaScript面向对象精要）/index.html">
+<meta property="og:site_name" content="junk-bros&#39; blog">
+<meta property="og:description" content="阅读JavaScript面向对象精要这本书时做的一些知识点总结，用于日后巩固。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-27T03:59:48.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习笔记（JavaScript面向对象精要）">
+<meta name="twitter:description" content="阅读JavaScript面向对象精要这本书时做的一些知识点总结，用于日后巩固。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/27/学习笔记（JavaScript面向对象精要）/">
+
+
+
+
+
+  <title>学习笔记（JavaScript面向对象精要） | junk-bros' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">junk-bros' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/27/学习笔记（JavaScript面向对象精要）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="junk-bros">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="junk-bros' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习笔记（JavaScript面向对象精要）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-27T11:49:37+08:00">
+                2018-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  阅读JavaScript面向对象精要这本书时做的一些知识点总结，用于日后巩固。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="原始类型和引用类型"><a href="#原始类型和引用类型" class="headerlink" title="原始类型和引用类型"></a>原始类型和引用类型</h1><ul>
+<li>原始类型（5 种）：boolean, number, string, null, undefined<ul>
+<li>鉴别原始类型：typeof</li>
+<li>原始方法</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>引用类型（对象）<ul>
+<li>创建对象<br>（1）new 操作符和构造函数<br>var object = new object();</li>
+<li>随时添加和删除属性</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>内建类型实例化：Array, Date, Error, Function, Object, RegExp<br>通过 new 来实例化每一个内建类型引用<ul>
+<li>字面形式（不需要使用 new 操作符和构造函数显式创建对象的情况下生成引用值）</li>
+<li>对象和数组字面形式<br>// 对象<br>var book = {<br>name: “JS”,<br>year: 2014<br>}<br>//等价于<br>var book = new Object();<br>book.name = “JS”;<br>book.year = 2014;<br>// 数组<br>var colors = [ “red”,”blue”,”green”];<br>//等价于<br>var colors = new Array(“red”,”blue”,”green”);</li>
+<li>函数字面形式<br>function reflect(value){<br>return value;<br>}<br>// 等价于<br>var reflect = new Function(“value”,”return value;”)</li>
+<li>正则表达式字面形式<br>var numbers = /\d+/g;<br>// 等价于<br>var numbers = new RegExp(“\d+”,”g”);</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>鉴别引用类型（typeof , instanceof）</li>
+<li>原始封装类型（String, Number, Boolean）</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li>声明&amp;表达式<br>// 函数声明<br>function add(num1,num2){<br>return num1 + num2;<br>}<br>// 函数表达式<br>var add = function(num1,num2){<br>return num1 + num2;<br>};<br>函数声明会被提升至上下文的顶部</li>
+<li>函数就是值<br>可以像使用对象一样使用函数，也可以将她们赋给变量，在对象中添加它们，将它们当成参数传递给别的函数，或从别的函数中返回。<br>var numbers = [ 1,4,5,5,2,6,7,2 ];<br>numbers.sort(function(first,second){<br>return first - second;<br>})</li>
+<li>参数<br>可以给函数传递任意数量的参数却不造成错误。函数参数实际上被保存在一个被称为 arguments 的类似数组的对象中。arguments 可以自由增长来包含任意个数的值。arguments.length 可以获取参数个数。</li>
+<li>重载<br>JS 函数没有签名，因此不存在重载<br>function sayMessage(message){<br>console.log(message);<br>}<br>function sayMessage(){<br>console.log(“default message”);<br>}<br>sayMessage(“Hello”);<br>// 输出”default message”</li>
+<li>对象方法<br>可以给对象添加或删除属性，如果属性的值是函数，则该属性被称为方法。<br>var person = {<br>name : “tang”,<br>sayName : function(){<br>console.log(person.name);<br>}<br>}<br>person.sayName();</li>
+<li>this 对象<br>javascript 所有的函数作用域内都有一个 this 对象代表调用该函数的对象。在全局作用于中，this 代表全局对象（浏览器里的 window）。当一个函数作为对象的方法被调用时，默认 this 的值等于那个对象。<br>var person = {<br>name : “tang”,<br>sayName : function(){<br>console.log(this.name);<br>}<br>};<br>person.sayName();</li>
+<li>改变 this<ol>
+<li>call()方法<br>call()的第一个参数指定了函数执行时的 this 的值，其后的所有参数都是需要被传入函数的参数。<br>function sayNameForAll(label){<br>console.log(label + “:” + this.name);<br>}<br>var person1 = {<br>name : “Nicholas”<br>};<br>var person2 = {<br>name : “Greg”<br>};<br>var name = “Tom”;<br>sayNameForAll.call(this,”global”);<br>sayNameForAll.call(person1,”person1”);<br>sayNameForAll.call(person2,”person2”);<br>//此时的函数名被作为对象访问，所以后面没有小括号</li>
+<li>apply()方法<br>apply()的工作方式和 call()完全一样，但它只接受两个参数：this 的值和一个数组或类似数组的对象，内含需要被传入函数的参数。不需要像使用 call()那样一个个指定参数，而是可以轻松的传递整个数组给 apply()。<br>function sayNameForAll(label){<br>console.log(label + “:” + this.name);<br>}<br>var person1 = {<br>name : “Nicholas”<br>};<br>var person2 = {<br>name : “Greg”<br>};<br>var name = “Tom”;<br>sayNameForAll.call(this,[“global”]);<br>sayNameForAll.call(person1,[“person1”]);<br>sayNameForAll.call(person2,[“person2”]);</li>
+<li>bind()方法<br>bind()的第一个参数是要传给新函数的 this 的值。其他所有参数代表需要被永久设置在新函数中的命名参数。<br>function sayNameForAll(label){<br>console.log(label + “:” + this.name);<br>}<br>var person1 = {<br>name : “Nicholas”<br>};<br>var person2 = {<br>name : “Greg”<br>};<br>var sayNameForPerson1 = sayNameForAll.bind(person1);<br>sayNameForPerson1(“person1”);<br>//输出 “person1:Nicholas”<br>var sayNameForPerson2 = sayNameForAll.bind(person2,”person2”);<br>sayNameForPerson2();<br>//输出 “person2:Greg”<br>person2.sayName = sayNameForPerson1;<br>person2.sayName(“person2”);<br>//输出 “person2:Nicholas”</li>
+</ol>
+</li>
+</ul>
+<h1 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h1><ul>
+<li>定义属性<br>两种方式：使用 Object 构造函数或使用对象的字面形式<br>var person1 = {<br>name : “Tom”<br>};<br>var person2 = new Object();<br>person2.name = “Tom”;<br>person1.age = 10;<br>person2.age = 20;<br>person1.name = “Nicholas”;<br>person2.name = “Greg”;</li>
+<li>属性探测<br>in 操作符在给定对象中查找一个给定名称的属性<br>console.log(“name” in person1);<br>// true<br>console.log(“title” in person1);<br>// false<br>in 操作符会检查自有属性和原型属性。如果希望仅当一个属性是自由属性时才检查其是否存在，考虑所有对象都拥有的 hasOwnProperty()方法。该方法在给定的属性存在且为自由属性时返回 true。<br>var person1 = {<br>name : “Tom”;<br>sayName : function(){<br>console.log(this.name);<br>}<br>};<br>console.log(“toString” in person1); // true<br>console.log(person1.hasOwnProperty(“toString”)); // false</li>
+<li>删除属性（delete person1.name）</li>
+<li>属性枚举<br>var property;<br>for(property in object){ //遍历所有的可枚举属性<br>console.log(“Name” + property);<br>console.log(“Value” + object[property])<br>}<br>// Object.keys()可以获取可枚举属性的名字的数组<br>可以用 propertyIsEnumerable()方法检查一个属性是否为可枚举的。</li>
+<li>属性类型（数据属性和访问器属性）<br>数据属性包含一个值，例如之前的 name 属性。<br>访问器属性不包含值而是定义了一个当属性被读取时调用的函数（getter）和一个当属性被写入时调用的函数（setter）。<br>var person = {<br>_name : “Tom”,<br>getName(){<br>console.log(“Reading name”);<br>return this._name;<br>}<br>setName(value){<br>console.log(“Setting name to “+ value);<br>this._name = value;<br>}<br>};<br>console.log(person.name);<br>person.name = “Greg”;<br>console.log(person.name);</li>
+<li>属性特征<ul>
+<li>通用特征<br>[[Enumerable]] 决定是否可以遍历该属性<br>[[Configurable]] 决定该属性是否可以配置<br>自己声明的所有属性默认都是可枚举、可配置的<br>可以通过 Object.defineProperty()来改变属性特征，接受三个参数：拥有该属性的对象、属性名和包含需要设置的特征的属性描述对象。<br>var person = {<br>name : “Tom”<br> };<br>Object.defineProperty(person, “name”, {<br>enumerable: false<br>})<br>console.log(“name” in person); // true<br>var properties = Object.keys(person1);<br>console.log(properties.length); // 0<br>Object.defineProperty(person, “name”, {<br>configurable: false<br>});<br>delete person.name;<br>console.log(“name” in person); // true<br>Object.defineProperty(person, “name”, { // error!<br>configurable: true<br>});</li>
+<li>数据属性特征<br>[[Value]] 包含属性的值<br>[[Writable]] 指定该属性是否可以写入（默认可写）</li>
+<li>访问器属性特征<br>[[Get]]<br>[[Set]]<br>内含 getter 和 setter 函数<br>var person = {<br>_name : “Tom”,<br>};<br>Object.defineProperty(person1,”name”,{<br>get: function(){<br>return this._name;<br>},<br>set: function(value){<br>this._name = value;<br>},<br>enumerable: true,<br>configurable: true<br>})<br>// 只定义 getter 表示该属性的值只能被读取，不能被改变</li>
+<li>定义多重属性（ Object.defineProperties() ）</li>
+<li>获取属性特征（Object.getOwnPropertyDescriptor() ）<br>var person = {<br>name : “Tom”<br>};<br>var descriptor = Object.getOwnPropertyDescriptor(person,”name”);<br>console.log(descriptor.value);<br>console.log(descriptor.writable);<br>console.log(descriptor.enumerable);<br>console.log(descriptor.configurable);</li>
+</ul>
+</li>
+<li>禁止修改对象<br>对象的[[Extensible]]指明该对象本身是否可以被修改<ul>
+<li>禁止拓展（Object.preventExtensions() ）<br>不能给该对象添加新的属性</li>
+<li>对象封印（Object.seal() ）<br>一个被封印的对象是不可拓展的且其所有属性都不可配置</li>
+<li>对象冻结（Object.freeze() ）<br>不能在该对象上添加或删除属性，不能改变属性类型，也不能写入任何数据属性，且无法解冻。<br>被冻结对象是一个数据类型都为只读的被封印对象</li>
+</ul>
+</li>
+</ul>
+<h1 id="构造函数和原型对象"><a href="#构造函数和原型对象" class="headerlink" title="构造函数和原型对象"></a>构造函数和原型对象</h1><ul>
+<li>构造函数<br>好处：所有用同一个构造函数创建的对象都具有同样的属性和方法。<br>function Person(){ //构造函数首字母要大写<br>}<br>var person1 = new Person();<br>console.log(person1 instanceof Person); // true<br>console.log(person1.constructor === Person) // true<br>使用构造函数的目的是为了轻松创建许多拥有相同属性和方法的对象。<br>function Person(name){<br>this.name = name;<br>this.sayName = function(){<br>console.log(this.name);<br>};<br>}<br>当调用构造函数时，new 会自动创建 this 对象</li>
+<li><p>原型对象<br>可以把原型对象看作是对象的基类。几乎所有的函数都有一个 propotype 的属性，该属性是一个原型对象用来创建新的对象实例，所有创建的对象实例共享该原型对象，且这些对象实例可以访问原型对象的属性。<br>var book = {<br>title : “JS”<br> };<br>console.log(“title” in book); //true<br>console.log(book.hasOwnProperty(“title”)); //true<br>console.log(“hasOwnProperty” in book); //true<br>console.log(book.hasOwnProperty(“hasOwnProperty”)); //false<br>console.log(Object.prototype.hasOwnProperty(“hasOwnProperty”)); //true<br>如果某个属性 in 一个对象，但 hasOwnProperty()返回 false，那么这个属性就是一个原型属性</p>
+<ul>
+<li>[[prototype]]属性<br>一个对象实例通过内部属性[[prototype]]跟踪其原型对象，当用 new 创建一个新的对象时，构造函数的原型对象会被赋给该对象的[[prototype]]属性。<br>// 可以调用 Object.getPrototypeOf()方法来读取[[prototype]]属性的值<br>var object = {};<br>var prototype = Object.getPrototypeOf(object);<br>console.log(prototype === Object.prototype); //true<br>// 也可以用 isPrototypeOf()方法来检查某个对象是否是另一个对象的原型对象<br>var object = {};<br>console.log(Object.prototype.isPrototypeOf(object)) //true<br>当读取一个对象的属性时，javascript 引擎首先在该对象的自有属性中查找属性名字。如果自有属性中不包含该名字，则 javascript 会搜索[[prototype]]中的对象。<br>无法给一个对象的原型属性复制</li>
+<li><p>在构造函数中使用原型对象<br>原型对象的共享机制使得它们成为一次性为所有对象定义方法的理想手段。将方法放在原型对象中并用 this 访问当前实例是更有效的做法。<br>function Person(name){<br>this.name = name;<br>}<br>Person.prototype.sayName = function(){<br>console.log(this.name);<br>};<br>var person1 = new Person(“Nicholas”);<br>var person2 = new Person(“Greg”);<br>在原型对象上存储引用值时需要注意：这些引用值会被多个实例共享<br>一种更简洁的方式：直接用一个对象字面形式替换原型对象<br>function Person(name){<br>this.name = name;<br>}<br>Person.prototype = {<br>sayName : function(){<br>console.log(this.name);<br>},<br>toString : function(){<br>return “[Person “+ this.name +”]”<br>}<br>};<br>var person1 = new Person(“Nicholas”);<br>这种做法的副作用：会使原型对象改变了构造函数的属性，上例中的 person1 现在指向 Object 而不是 Person。这是因为原型对象具有一个 constructor 属性。当一个函数被创建时，它的 prototype 属性也被创建，且该原型对象的 constructor 属性指向该函数。当使用对象字面形式改写原型对象 Person.prototype 时，其 constructor 属性将被自动置为泛用对象 Object。<br>解决方案：在改写原型对象时手动重置其 constructor 属性<br>function Person(name){<br>this.name = name;<br>}<br>Person.prototype = {<br>constructor : Person,</p>
+<p>sayName : function(){<br>console.log(this.name);<br>},<br>toString : function(){<br>return “[Person “+ this.name +”]”<br>}<br>};<br>构造函数、原型对象和对象实例之间的关系：<br>对象实例和构造函数之间没有直接联系。<br>对象实例和原型对象以及原型对象和构造函数之间都有直接联系。</p>
+</li>
+<li><p>改变原型对象<br>[[prototype]]属性只是包含了一个指向原型对象的指针，任何对原型对象的改变都立即反映到所有引用它的对象实例上。</p>
+</li>
+<li>内建对象的原型对象<br>原型对象也允许你改变 JavaScript 引擎的标准内建对象<br>Array.prototype.sum = function(){<br>return this.reduce(function(previous,current){<br>return previous + current;<br> })；<br>}；<br>var numbers = [ 1,2,4,6,3 ];<br>var result = numbers.sum();<br>第四章总结：<br>构造函数就是用 new 操作符调用的普通函数。<br>每个函数都具有 prototype 属性，它定义了该构造函数创建的所有对象共享的属性。<br>原型对象被保存在对象实例内部的[[prototype]]属性中，这个属性时一个引用而不是一个副本。<br>内建对象也有可以被修改的原型对象（不建议在生产环境中这么做）</li>
+</ul>
+</li>
+</ul>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><ul>
+<li>原型对象链和 Object.prototype<br>对象实例继承了原型对象的属性。因为原型对象也是一个对象，它也有自己的原型对象并继承其属性。这就是原型对象链：对象继承其原型对象，而原型对象继承它的原型对象……<br>所有的对象都自动继承自 Object.prototype<br>var book = {<br>title : “JS”<br>};<br>var prototype = Object.getPrototypeOf(book);<br>console.log(prototype === Object.prototype) //true<ul>
+<li>继承自 Object.prototype 的方法<br>如下：<br>hasOwnProperty() 检查是否存在一个给定名字的自有属性<br>propertyIsEnumerable() 检查一个自有属性是否可枚举<br>isPrototypeOf() 检查一个对象是否是另一个对象的原型对象<br>valueOf() 返回一个对象的值表达<br>toString() 返回一个对象的字符串表达</li>
+<li>修改 Object.prototype<br>最好不要修改。</li>
+</ul>
+</li>
+<li>对象继承<br>对象继承是最简单的继承类型。只需要指定哪个对象是新对象的[[prototype]]。对象字面形式会隐式指定 Object.prototype 为其[[prototype]]，也可以用 Object.create()方法显示指定。<br>Object.create()方法接受两个参数。第一个参数是需要被设置为新对象的[[prototype]]的对象。第二个可选参数是一个属性描述对象。<br>var book = {<br>title : “JS”<br>};<br>//等同于<br>var book = Object.create(Object.prototype, {<br>title: {<br>configurable: true,<br>enumerable: true,<br>value: “JS”,<br>writable: true<br>}<br>});<br>//继承自其它对象<br>var person1 = {<br>name: “Nicholas”,<br>sayName: function(){<br>console.log(this.name);<br>}<br>}<br>var person2 = Object.create(person1,{<br>name: {<br>configurable: true,<br>enumerable: true,<br>value: “Greg”,<br>writable: true<br>}<br>});<br>person1.sayName(); //输出 Nicholas<br>person2.sayName(); //输出 Greg</li>
+<li><p>构造函数继承<br>function Rectangle(length, width){<br>this.length = length;<br>this.width = width;<br>}</p>
+<p>Rectangle.prototype.getArea = function(){<br>return this.length<em> this.width;<br>}<br>Rectangle.prototype.toString = function(){<br>return “[Rectangle ]” + this.length + “</em>“ +this.width+ “]”;<br>}</p>
+<p>// inherits from Rectangle<br>function Square(size){<br>this.length = size;<br>this.width = size;<br>}<br>Square.prototype = new Rectangle();<br>Square.prototype.constuctor = Square;<br>Square.prototype.toString = function(){<br>return “[Square ]” + this.length + “*“ +this.width+ “]”;<br>}</p>
+<p>var rect = new Rectangle(5,10);<br>var square = new Square(6);<br>这段代码中有两个构造函数：Rectangle 和 Square。Square 构造函数的 prototype 属性被改写为 Rectangle 的一个对象实例。此时不需要给 Rectangle 的调用提供参数，因为它们不需要被使用。<br>Square.prototype 被改写后，其 constructor 属性会被重置为 Square。</p>
+<p>事实上，唯一相关的部分是 Square.prototype 需要指向 Rectangle.prototype 使得继承得以实现。<br>可以用 Objecty.prototype 简化例子<br>function Square(size){<br>this.length = size;<br>this.width = size;<br>}<br>Square.propotype = Object.create(Rectangle.prototype,{<br>constructor:{<br>configurable: true,<br>enumerable: true,<br>value: Square,<br>writable: true<br>}<br>});<br>Square.prototype.toString = function(){<br>return “[Square ]” + this.length + “*“ +this.width+ “]”;<br>}</p>
+</li>
+<li><p>构造函数窃取<br>Javascript 中的继承是通过原型对象链来实现的，因此不需要调用对象的父类的构造函数。<br>如果需要在子类构造函数中调用父类构造函数，可以利用 call() apply()方法<br>function Rectangle(length, width){<br>this.length = length;<br>this.width = width;<br>}<br>Rectangle.prototype.getArea = function(){<br>return this.length<em> this.width;<br>}<br>Rectangle.prototype.toString = function(){<br>return “[Rectangle ]” + this.length + “</em>“ +this.width+ “]”;<br>}<br>// inherits from Rectangle<br>function Square(size){<br>Rectangle.call(this, size, size);<br>}<br>Square.propotype = Object.create(Rectangle.prototype,{<br>constructor:{<br>configurable: true,<br>enumerable: true,<br>value: Square,<br>writable: true<br>}<br>});<br>Square.prototype.toString = function(){<br>return “[Square ]” + this.length + “*“ +this.width+ “]”;<br>}</p>
+</li>
+<li>访问父类方法<br>上例中，Square 类型有自己的 toString()方法隐藏了其原型对象的 toString()方法。但如果还想访问父类的 toString()方法，可以通过 call() apply()调用父类的原型对象的方法时传入一个子类的对象。<br>function Rectangle(length, width){<br>this.length = length;<br>this.width = width;<br>}<br>Rectangle.prototype.getArea = function(){<br>return this.length<em> this.width;<br>}<br>Rectangle.prototype.toString = function(){<br>return “[Rectangle ]” + this.length + “</em>“ +this.width+ “]”;<br>}<br>// inherits from Rectangle<br>function Square(size){<br>Rectangle.call(this, size, size);<br>}<br>Square.propotype = Object.create(Rectangle.prototype,{<br>constructor:{<br>configurable: true,<br>enumerable: true,<br>value: Square,<br>writable: true<br>}<br>});<br>Square.prototype.toString = function(){<br>vartext = Rectangle.prototype.toString.call(this);<br>return text.replace(“Rectangle”,”Square”);<br>}<br>第五章总结<br>JavaScript 通过原型对象链支持继承。当将一个对象的[[prototype]]设置为另一个对象时，就在这两个对象之间创建了一个原型对象链。所有的泛用对象都自动继承自 Object.prototype。如果想要创建一个继承自其他对象的对象，可以用 Object.create()指定[[prototype]]为一个新对象。</li>
+</ul>
+<h1 id="对象模式"><a href="#对象模式" class="headerlink" title="对象模式"></a>对象模式</h1><ul>
+<li>私有成员和特权成员<ul>
+<li>模块模式<br>基本做法是使用立调函数表达( IIFE )来返回一个对象。<br>var yourObject = (function(){<br>//私有成员<br>return {<br>//公共方法和属性<br>}<br>});</li>
+<li>构造函数的私有成员<br>function Person(name){<br>var age = 25; //私有变量<br>this.name = name;<br>this.getAge = function(){<br>return age;<br>}<br>this.growOlder = function(){<br>age++;<br>}<br>}</li>
+</ul>
+</li>
+<li><p>混入</p>
+</li>
+<li><p>作用域安全的构造函数<br>function Person(name){<br>this.name = name;<br>}<br>Person.prototype.sayName = function(){<br>console.log(this.name);<br>}<br>var person1 = Person(“Tom”); //没有使用 new 操作符调用构造函数<br>console.log(person1 instanceof Person); //false<br>console.log(typeof person1); //“undefined<br>console.log(name); //Tom<br>在这个例子中，由于 Person 构造函数不是用 new 来调用的，导致我们创建了一个全局变量 name。<br>我们可以在构造函数内部用 instanceof 来检查自己是否被 new 调用，一个作用域安全的 Person 版本如下：<br>function Person(name){<br>if(this instanceof Person){<br>this.name = name;<br>}else{<br>return new Person(name);<br>}<br>}</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/20/JUNK-DA开发路线/" rel="next" title="JUNK DA开发路线">
+                <i class="fa fa-chevron-left"></i> JUNK DA开发路线
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/27/this、call和apply知识点整理/" rel="prev" title="this、call和apply知识点整理">
+                this、call和apply知识点整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="junk-bros">
+            
+              <p class="site-author-name" itemprop="name">junk-bros</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原始类型和引用类型"><span class="nav-number">1.</span> <span class="nav-text">原始类型和引用类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#理解对象"><span class="nav-number">3.</span> <span class="nav-text">理解对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数和原型对象"><span class="nav-number">4.</span> <span class="nav-text">构造函数和原型对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#继承"><span class="nav-number">5.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象模式"><span class="nav-number">6.</span> <span class="nav-text">对象模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-bolt"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">junk-bros</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
